@@ -231,6 +231,28 @@
             </span>
           {% endif %}
 
+          {% if post.tags and post.tags.length and theme.post_meta.tags %}
+            <div class="post-header-tags">
+              <span class="post-tag" >
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-tags"></i>
+                </span>
+                {% for tag in post.tags %}
+                  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                    <a href="{{ url_for(tag.path) }}" itemprop="url" rel="index">
+                      <span itemprop="name">{{ tag.name }}</span>
+                    </a>
+                  </span>
+
+                  {% set tag_length = post.tags.length %}
+                  {% if tag_length > 1 and loop.index !== tag_length %}
+                    {{ __('symbol.comma') }}
+                  {% endif %}
+                {% endfor %}
+              </span>
+            </div>
+          {% endif %}
+
           {% if config.symbols_count_time.symbols or config.symbols_count_time.time %}
             <div class="post-symbolscount">
               {% if not theme.symbols_count_time.separated_meta %}
