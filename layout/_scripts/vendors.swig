@@ -24,10 +24,7 @@
   {% set js_vendors.fancybox  = 'fancybox/source/jquery.fancybox.pack.js?v=2.1.5' %}
 {% endif %}
 
-{% set enable_bg = true %}
-{% if theme.index_bg_only %}
-  {% set enable_bg = is_current('/') %}
-{% endif %}
+{% set enable_bg = not theme.index_bg_only or item_active('/', 'active') === ' active' %}
 
 {% if theme.canvas_nest.enable and enable_bg %}
   {% if theme.canvas_nest.onmobile %}
