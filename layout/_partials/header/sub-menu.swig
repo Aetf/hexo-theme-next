@@ -4,7 +4,9 @@
     {% import '../../_macro/menu/menu-item.swig' as menu_item %}
 
     {# Submenu & Submenu-2 #}
-    {% for name, value in theme.menu %}
+    {% for item in theme.menu %}
+      {% set name = item.name %}
+      {% set value = item.path %}
       {% set respath = value %}
       {% if value == '[object Object]' %}
 
@@ -14,7 +16,9 @@
 
           {# Submenu items #}
           <ul id="sub-menu" class="sub-menu menu">
-          {% for subname, subvalue in value %}
+          {% for subitem in value %}
+            {% set subname = subitem.name %}
+            {% set subvalue = subitem.path %}
             {# For main submenu items #}
             {% if subvalue != '[object Object]' %}
               {% set itemName = subname.toLowerCase() %}
@@ -39,11 +43,15 @@
           {# End Submenu items #}
 
           {# Submenu-2 #}
-          {% for name, value in theme.menu %}
+          {% for item in theme.menu %}
+            {% set name = item.name %}
+            {% set value = item.path %}
             {% set respath = value %}
             {% if value == '[object Object]' %}
 
-              {% for subname, subvalue in value %}
+              {% for subitem in value %}
+                {% set subname = subitem.name %}
+                {% set subvalue = subitem.path %}
                 {% set itemName = subname.toLowerCase() %}
                 {% if itemName == 'default' %}
                   {% set parentValue = subvalue.split('||')[0] | trim %}

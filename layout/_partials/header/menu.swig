@@ -3,11 +3,15 @@
 <nav class="site-nav">
   {% if theme.menu %}
     <ul id="menu" class="menu">
-      {% for name, path in theme.menu %}
+      {% for item in theme.menu %}
+        {% set name = item.name %}
+        {% set path = item.path %}
         {% set respath = path %}
         {% if path == '[object Object]' %}
         {# Main Menu (default menu item for Submenu) #}
-          {% for subname, subpath in path %}
+          {% for subitem in path %}
+            {% set subname = subitem.name %}
+            {% set subpath = subitem.path %}
             {% set itemName = subname.toLowerCase() %}
             {% set respath = subpath %}
             {% if itemName == 'default' %}
