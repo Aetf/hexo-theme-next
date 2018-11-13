@@ -294,6 +294,8 @@ post_meta:
     # If false show anyway, but if post edited in same day, show only edited time.
     another_day: true
   categories: true
+  # show tags at footer
+  footer_tags: true
 
 # Post wordcount display settings
 # Dependencies: https://github.com/theme-next/hexo-symbols-count-time
