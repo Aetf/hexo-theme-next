@@ -120,7 +120,7 @@ NexT.utils = NexT.$u = {
     });
 
     $top.on('click', function() {
-      $('body').velocity('scroll');
+      $('body').velocity('scroll', CONFIG.backToTopOptions || {});
     });
   },
 
